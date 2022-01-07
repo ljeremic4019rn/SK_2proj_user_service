@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Client extends User{
 
-    private int passportNumber;
-    private int numberOfReservation;
+    private Integer passportNumber;
+    private Integer numberOfReservation;
 
     public Client() {
     }
