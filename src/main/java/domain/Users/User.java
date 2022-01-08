@@ -23,7 +23,7 @@ public abstract class User {
     @JoinColumn(name = "rank_id")
     private Rank rank;
 
-    public User() {
+    public User() { //todo konstruktori
     }
 
     public User(String username, String password, Integer phoneNumber, String email, Date dateOfBirth, String firstName, String lastName, Rank rank) {
