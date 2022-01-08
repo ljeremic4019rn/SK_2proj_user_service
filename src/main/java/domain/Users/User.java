@@ -1,10 +1,12 @@
-package domain;
+package domain.Users;
+
+import domain.Rank;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Optional;
 
-@Entity
-public class User {
+public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,12 +17,16 @@ public class User {
     private Date dateOfBirth;
     private String firstName;
     private String lastName;
+    private boolean AccessAvailable;
+
+    @OneToOne
+    @JoinColumn(name = "rank_id")
+    private Rank rank;
 
     public User() {
-
     }
 
-    public User( String username, String password, int phoneNumber, String email, Date dateOfBirth, String firstName, String lastName) {
+    public User(String username, String password, Integer phoneNumber, String email, Date dateOfBirth, String firstName, String lastName, Rank rank) {
         this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -28,6 +34,24 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.AccessAvailable = true;
+        this.rank = rank;
+    }
+
+    public boolean isAccessAvailable() {
+        return AccessAvailable;
+    }
+
+    public void setAccessAvailable(boolean accessAvailable) {
+        AccessAvailable = accessAvailable;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
     }
 
     public Long getId() {
@@ -54,11 +78,11 @@ public class User {
         this.password = password;
     }
 
-    public int getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
