@@ -1,10 +1,9 @@
-package domain.Users;
+package domain.Users_forLater;
 
 import domain.Rank;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Optional;
 
 public abstract class User {
     @Id

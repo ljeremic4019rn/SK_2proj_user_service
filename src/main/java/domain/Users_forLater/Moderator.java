@@ -1,9 +1,8 @@
-package domain.Users;
+package domain.Users_forLater;
 
-import javax.persistence.Entity;
 import java.util.Date;
 
-@Entity
+//@Entity
 public class Moderator extends User{
     private String hotelName;
     private Date hireDate;

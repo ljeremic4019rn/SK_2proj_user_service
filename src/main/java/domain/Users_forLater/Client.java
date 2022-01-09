@@ -1,9 +1,6 @@
-package domain.Users;
+package domain.Users_forLater;
 
-import javax.persistence.Entity;
-import java.util.Date;
-
-@Entity
+//@Entity
 public class Client extends User{
     private Integer passportNumber;
     private Integer numOfReservations;

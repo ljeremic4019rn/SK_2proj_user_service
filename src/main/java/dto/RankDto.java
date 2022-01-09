@@ -1,27 +1,18 @@
-package domain;
+package dto;
 
-import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
-@Entity
-public class Rank {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RankDto {
     private Long id;
+    @NotEmpty(message = "rank cant be empty")
     private String rank;
+    @Min(value = 0, message = "The value must be positive")
     private Integer points;
+    @Min(value = 0, message = "The value must be positive")
     private Integer discountPercentage;
-    @OneToOne
-    private UserHolder userHolder;
 
-    public Rank() {
-    }
 
-    public Rank(String rank, Integer points, Integer discountPercentage, UserHolder userHolder) {
-        this.rank = rank;
-        this.points = points;
-        this.discountPercentage = discountPercentage;
-        this.userHolder = userHolder;
-    }
 
     public Long getId() {
         return id;
@@ -53,13 +44,5 @@ public class Rank {
 
     public void setDiscountPercentage(Integer discountPercentage) {
         this.discountPercentage = discountPercentage;
-    }
-
-    public UserHolder getUserHolder() {
-        return userHolder;
-    }
-
-    public void setUserHolder(UserHolder userHolder) {
-        this.userHolder = userHolder;
     }
 }
