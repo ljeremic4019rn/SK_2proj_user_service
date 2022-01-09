@@ -1,6 +1,8 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Rank {
@@ -10,8 +12,8 @@ public class Rank {
     private String rank;
     private Integer points;
     private Integer discountPercentage;
-    @OneToOne
-    private UserHolder userHolder;
+    @OneToMany
+    private List<UserHolder> userHolder;
 
     public Rank() {
     }
@@ -20,7 +22,7 @@ public class Rank {
         this.rank = rank;
         this.points = points;
         this.discountPercentage = discountPercentage;
-        this.userHolder = userHolder;
+        this.userHolder = new ArrayList<>();
     }
 
     public Long getId() {
@@ -55,11 +57,11 @@ public class Rank {
         this.discountPercentage = discountPercentage;
     }
 
-    public UserHolder getUserHolder() {
+    public List<UserHolder> getUserHolder() {
         return userHolder;
     }
 
-    public void setUserHolder(UserHolder userHolder) {
+    public void setUserHolder(List<UserHolder> userHolder) {
         this.userHolder = userHolder;
     }
 }

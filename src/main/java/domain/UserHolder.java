@@ -15,8 +15,8 @@ public class UserHolder {
     private String password;
     private Long phoneNumber;
     private Date birthDate;
-    private boolean accessEnabled;
-    @OneToOne
+    private Boolean accessEnabled;
+    @ManyToOne
     private Rank rank;
 
     public UserHolder() {

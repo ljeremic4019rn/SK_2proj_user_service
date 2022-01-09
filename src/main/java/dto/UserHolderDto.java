@@ -1,5 +1,7 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class UserHolderDto {
@@ -11,7 +13,9 @@ public class UserHolderDto {
     private String password;
     private Long phoneNumber;
     private Date birthDate;
-    private boolean accessEnabled;
+    private Boolean accessEnabled;
+    @JsonProperty("rank")
+    private RankDto rankDto;
 
     public Long getId() {
         return id;

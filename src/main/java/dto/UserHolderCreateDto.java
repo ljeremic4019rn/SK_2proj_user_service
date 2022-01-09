@@ -1,5 +1,6 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
@@ -23,7 +24,7 @@ public class UserHolderCreateDto {
     @NotBlank
     private Date birthDate;
     @NotBlank
-    private boolean accessEnabled;
+    private Boolean accessEnabled;
 
 
 
