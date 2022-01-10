@@ -26,7 +26,7 @@ public class ManagerMapper {
 
     public Manager managerDtoToManager(ManagerCreateDto managerCreateDtoDto){
         Manager manager = new Manager();
-        manager.setId(managerCreateDtoDto.getId());
+      //  manager.setId(managerCreateDtoDto.getId());
         manager.setHireDate(managerCreateDtoDto.getHireDate());
         manager.setHotel(managerCreateDtoDto.getHotel());
         manager.setUser(userRepository.findById(managerCreateDtoDto.getUserId())

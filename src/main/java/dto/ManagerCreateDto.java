@@ -6,18 +6,18 @@ import java.util.Date;
  * Created on 09.01.2022. by Andrija inside package dto.
  */
 public class ManagerCreateDto {
-    private Long id;
+   // private Long id;
     private String hotel;
     private Date hireDate;
     private Long userId;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getHotel() {
         return hotel;

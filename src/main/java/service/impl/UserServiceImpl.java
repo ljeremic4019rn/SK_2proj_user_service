@@ -1,7 +1,9 @@
 package service.impl;
 
+import domain.User;
 import dto.UserCreateDto;
 import dto.UserDto;
+import exception.NotFoundException;
 import mapper.UserMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,16 +30,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto add(UserCreateDto userCreateDto) {
-        return null;
+        User user = userMapper.userCreateDtoToUser(userCreateDto);
+        userRepository.save(user);
+        return userMapper.userToUserDto(user);
     }
 
     @Override
     public UserDto findById(Long id) {
-        return null;
+        return userRepository.findById((id))
+                .map(userMapper::userToUserDto)
+                .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
     }
 
     @Override
     public void deleteById(Long id) {
-
+        userRepository.deleteById((id));//todo dodaj error catcher ako ne nadje usera
     }
 }

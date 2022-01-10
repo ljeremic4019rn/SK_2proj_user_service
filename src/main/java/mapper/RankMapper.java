@@ -2,6 +2,7 @@ package mapper;
 
 
 import domain.Rank;
+import dto.RankCreateDto;
 import dto.RankDto;
 
 public class RankMapper {
@@ -14,12 +15,12 @@ public class RankMapper {
         rankDto.setDiscountPercentage(rank.getDiscountPercentage());
         return rankDto;
     }
-    public Rank rankDtoToRank(RankDto rankDto){
+    public Rank rankDtoToRank(RankCreateDto rankCreateDto){
         Rank rank = new Rank();
-        rank.setId(rankDto.getId());
-        rank.setRank(rankDto.getRank());
-        rank.setPoints(rankDto.getPoints());
-        rank.setDiscountPercentage(rankDto.getDiscountPercentage());
+       // rank.setId(rankCreateDto.getId());
+        rank.setRank(rankCreateDto.getRank());
+        rank.setPoints(rankCreateDto.getPoints());
+        rank.setDiscountPercentage(rankCreateDto.getDiscountPercentage());
 
         return rank;
     }

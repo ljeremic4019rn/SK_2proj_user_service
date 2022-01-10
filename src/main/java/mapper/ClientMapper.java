@@ -24,7 +24,7 @@ public class ClientMapper {
 
     public Client clientDtoToClient(ClientCreateDto clientCreateDto){
         Client client = new Client();
-        client.setId(clientCreateDto.getId());
+      //  client.setId(clientCreateDto.getId());
         client.setPassportNo(clientCreateDto.getPassportNo());
         client.setReservationNo(clientCreateDto.getReservationNo());
         client.setUser(userRepository.findById(clientCreateDto.getUserId())

@@ -1,7 +1,9 @@
 package service.impl;
 
+import domain.User;
 import dto.AdminCreateDto;
 import dto.AdminDto;
+import exception.NotFoundException;
 import mapper.AdminMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +25,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Page<AdminDto> findAll(Pageable pageable) {
-        return null;
+        return adminRepository.findAll(pageable)
+                .map(adminMapper::adminToAdminDto);
     }
 
     @Override
@@ -33,11 +36,13 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminDto findById(Long id) {
-        return null;
+        return adminRepository.findById((id))
+                .map(adminMapper::adminToAdminDto)
+                .orElseThrow(() -> new NotFoundException(String.format("Admin with id: %d not found.", id)));
     }
 
     @Override
     public void deleteById(Long id) {
-
+        adminRepository.deleteById((id));
     }
 }

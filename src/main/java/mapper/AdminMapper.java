@@ -22,7 +22,7 @@ public class AdminMapper {
 
     public Admin adminDtoToAdmin(AdminCreateDto adminCreateDto){
         Admin admin = new Admin();
-        admin.setId(adminCreateDto.getId());
+      //  admin.setId(adminCreateDto.getId());
         admin.setUser(userRepository.findById(adminCreateDto.getUserId())
                 .orElseThrow(() -> new NotFoundException(String
                         .format("User with id: %d does not exists.", adminCreateDto.getUserId()))));
