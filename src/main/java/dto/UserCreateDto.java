@@ -26,7 +26,7 @@ public class UserCreateDto {
     @NotBlank
     private Boolean accessEnabled;
     private Long rankId;
-
+    private String role;
 
     public String getEmail() {
         return email;
@@ -98,5 +98,13 @@ public class UserCreateDto {
 
     public void setRankId(Long rankId) {
         this.rankId = rankId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

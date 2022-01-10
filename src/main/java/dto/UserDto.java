@@ -16,6 +16,8 @@ public class UserDto {
     private Boolean accessEnabled;
     @JsonProperty("rank")
     private RankDto rankDto;
+    private String role;
+
 
     public Long getId() {
         return id;
@@ -95,5 +97,13 @@ public class UserDto {
 
     public void setRankDto(RankDto rankDto) {
         this.rankDto = rankDto;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

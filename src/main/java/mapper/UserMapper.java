@@ -11,9 +11,10 @@ public class UserMapper {
     private RankRepository rankRepository;
     private RankMapper rankMapper;
 
-    public UserMapper() {
+    public UserMapper(RankRepository rankRepository, RankMapper rankMapper) {
+        this.rankRepository = rankRepository;
+        this.rankMapper = rankMapper;
     }
-
 
     public UserDto userToUserDto (User user) {
         UserDto userDto = new UserDto();
@@ -28,6 +29,7 @@ public class UserMapper {
         userDto.setBirthDate(user.getBirthDate());
         userDto.setAccessEnabled(user.getAccessEnabled());
         userDto.setRankDto(rankMapper.rankToRankDto(user.getRank()));
+        userDto.setRole(user.getRole());
         return userDto;
     }
 
@@ -44,6 +46,7 @@ public class UserMapper {
         user.setRank(rankRepository.findById(userCreateDto.getRankId())
                 .orElseThrow(() -> new NotFoundException(String
                         .format("Rank with id: %d does not exists.", userCreateDto.getRankId()))));
+        user.setRole(userCreateDto.getRole());
         return user;
     }
 

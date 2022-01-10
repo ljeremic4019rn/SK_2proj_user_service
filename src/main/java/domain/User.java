@@ -18,7 +18,7 @@ public class User {
     private Boolean accessEnabled;
     @ManyToOne
     private Rank rank;
-
+    private String role;
     public User() {
     }
 
@@ -115,5 +115,11 @@ public class User {
         this.rank = rank;
     }
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
