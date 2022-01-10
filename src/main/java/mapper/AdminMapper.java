@@ -20,7 +20,7 @@ public class AdminMapper {
         return adminDto;
     }
 
-    public Admin adminDtoToAdmin(AdminCreateDto adminCreateDto){
+    public Admin adminCreateDtoToAdmin(AdminCreateDto adminCreateDto){
         Admin admin = new Admin();
       //  admin.setId(adminCreateDto.getId());
         admin.setUser(userRepository.findById(adminCreateDto.getUserId())

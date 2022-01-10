@@ -1,7 +1,9 @@
 package service.impl;
 
+import domain.Client;
 import dto.ClientCreateDto;
 import dto.ClientDto;
+import exception.NotFoundException;
 import mapper.ClientMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,21 +25,26 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Page<ClientDto> findAll(Pageable pageable) {
-        return null;
+        return clientRepository.findAll(pageable)
+                .map(clientMapper::clientToClientDto);
     }
 
     @Override
     public ClientDto add(ClientCreateDto clientCreateDto) {
-        return null;
+        Client client = clientMapper.clientCreateDtoToClient(clientCreateDto);
+        clientRepository.save(client);
+        return clientMapper.clientToClientDto(client);
     }
 
     @Override
     public ClientDto findById(Long id) {
-        return null;
+        return clientRepository.findById((id))
+                .map(clientMapper::clientToClientDto)
+                .orElseThrow(() -> new NotFoundException(String.format("Client with id: %d not found.", id)));
     }
 
     @Override
     public void deleteById(Long id) {
-
+        clientRepository.deleteById((id));
     }
 }

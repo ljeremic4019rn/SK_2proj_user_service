@@ -1,7 +1,9 @@
 package service.impl;
 
+import domain.Manager;
 import dto.ManagerCreateDto;
 import dto.ManagerDto;
+import exception.NotFoundException;
 import mapper.ClientMapper;
 import mapper.ManagerMapper;
 import org.springframework.data.domain.Page;
@@ -25,21 +27,26 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Page<ManagerDto> findAll(Pageable pageable) {
-        return null;
+        return managerRepository.findAll(pageable)
+                .map(managerMapper::managerToManagerDto);
     }
 
     @Override
     public ManagerDto add(ManagerCreateDto managerCreateDto) {
-        return null;
+        Manager manager = managerMapper.managerCreateDtoToManager(managerCreateDto);
+        managerRepository.save(manager);
+        return managerMapper.managerToManagerDto(manager);
     }
 
     @Override
     public ManagerDto findById(Long id) {
-        return null;
+        return managerRepository.findById((id))
+                .map(managerMapper::managerToManagerDto)
+                .orElseThrow(() -> new NotFoundException(String.format("Manager with id: %d not found.", id)));
     }
 
     @Override
     public void deleteById(Long id) {
-
+        managerRepository.deleteById((id));
     }
 }

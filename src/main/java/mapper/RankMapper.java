@@ -15,7 +15,7 @@ public class RankMapper {
         rankDto.setDiscountPercentage(rank.getDiscountPercentage());
         return rankDto;
     }
-    public Rank rankDtoToRank(RankCreateDto rankCreateDto){
+    public Rank rankCreateDtoToRank(RankCreateDto rankCreateDto){
         Rank rank = new Rank();
        // rank.setId(rankCreateDto.getId());
         rank.setRank(rankCreateDto.getRank());

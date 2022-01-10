@@ -22,7 +22,7 @@ public class ClientMapper {
         return clientDto;
     }
 
-    public Client clientDtoToClient(ClientCreateDto clientCreateDto){
+    public Client clientCreateDtoToClient(ClientCreateDto clientCreateDto){
         Client client = new Client();
       //  client.setId(clientCreateDto.getId());
         client.setPassportNo(clientCreateDto.getPassportNo());

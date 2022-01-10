@@ -1,5 +1,6 @@
 package service.impl;
 
+import domain.Admin;
 import domain.User;
 import dto.AdminCreateDto;
 import dto.AdminDto;
@@ -31,7 +32,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminDto add(AdminCreateDto adminCreateDto) {
-        return null;
+        Admin admin = adminMapper.adminCreateDtoToAdmin(adminCreateDto);
+        adminRepository.save(admin);
+        return adminMapper.adminToAdminDto(admin);
     }
 
     @Override
