@@ -25,7 +25,7 @@ public class UserHolderCreateDto {
     private Date birthDate;
     @NotBlank
     private Boolean accessEnabled;
-
+    private Long rankId;
 
 
     public String getEmail() {
@@ -84,11 +84,19 @@ public class UserHolderCreateDto {
         this.birthDate = birthDate;
     }
 
-    public boolean isAccessEnabled() {
+    public Boolean getAccessEnabled() {
         return accessEnabled;
     }
 
-    public void setAccessEnabled(boolean accessEnabled) {
+    public void setAccessEnabled(Boolean accessEnabled) {
         this.accessEnabled = accessEnabled;
+    }
+
+    public Long getRankId() {
+        return rankId;
+    }
+
+    public void setRankId(Long rankId) {
+        this.rankId = rankId;
     }
 }

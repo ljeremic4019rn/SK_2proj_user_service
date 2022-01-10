@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface RankRepository extends JpaRepository<Rank, Long> {
-    Optional<Rank> findRankById (Long id);
+    //Optional<Rank> findRankById (Long id);
 }

@@ -16,7 +16,7 @@ public class Manager {
     private Date hireDate;
 
     @OneToOne
-    UserHolder userHolder;
+    private UserHolder userHolder;
 
     public Long getId() {
         return id;

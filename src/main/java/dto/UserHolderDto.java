@@ -81,11 +81,19 @@ public class UserHolderDto {
         this.birthDate = birthDate;
     }
 
-    public boolean isAccessEnabled() {
+    public Boolean getAccessEnabled() {
         return accessEnabled;
     }
 
-    public void setAccessEnabled(boolean accessEnabled) {
+    public void setAccessEnabled(Boolean accessEnabled) {
         this.accessEnabled = accessEnabled;
+    }
+
+    public RankDto getRankDto() {
+        return rankDto;
+    }
+
+    public void setRankDto(RankDto rankDto) {
+        this.rankDto = rankDto;
     }
 }

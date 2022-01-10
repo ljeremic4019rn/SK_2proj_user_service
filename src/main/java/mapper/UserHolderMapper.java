@@ -3,8 +3,13 @@ package mapper;
 import domain.UserHolder;
 import dto.UserHolderCreateDto;
 import dto.UserHolderDto;
+import exception.NotFoundException;
+import repository.RankRepository;
 
 public class UserHolderMapper {
+
+    private RankRepository rankRepository;
+    private RankMapper rankMapper;
 
     public UserHolderMapper() {
     }
@@ -21,7 +26,8 @@ public class UserHolderMapper {
         userHolderDto.setPassword(userHolder.getPassword());
         userHolderDto.setPhoneNumber(userHolder.getPhoneNumber());
         userHolderDto.setBirthDate(userHolder.getBirthDate());
-        userHolderDto.setAccessEnabled(userHolder.isAccessEnabled());
+        userHolderDto.setAccessEnabled(userHolder.getAccessEnabled());
+        userHolderDto.setRankDto(rankMapper.rankToRankDto(userHolder.getRank()));
         return userHolderDto;
     }
 
@@ -34,7 +40,10 @@ public class UserHolderMapper {
         userHolder.setPassword(userHolderCreateDto.getPassword());
         userHolder.setPhoneNumber(userHolderCreateDto.getPhoneNumber());
         userHolder.setBirthDate(userHolderCreateDto.getBirthDate());
-        userHolder.setAccessEnabled(userHolderCreateDto.isAccessEnabled());
+        userHolder.setAccessEnabled(userHolderCreateDto.getAccessEnabled());
+        userHolder.setRank(rankRepository.findById(userHolderCreateDto.getRankId())
+                .orElseThrow(() -> new NotFoundException(String
+                        .format("Rank with id: %d does not exists.", userHolderCreateDto.getRankId()))));
         return userHolder;
     }
 

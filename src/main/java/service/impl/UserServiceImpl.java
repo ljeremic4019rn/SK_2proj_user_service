@@ -30,4 +30,14 @@ public class UserServiceImpl implements UserHolderService {
     public UserHolderDto add(UserHolderCreateDto userHolderCreateDto) {
         return null;
     }
+
+    @Override
+    public UserHolderDto findById(Long id) {
+        return null;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+
+    }
 }

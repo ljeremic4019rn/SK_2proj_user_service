@@ -8,9 +8,8 @@ public class Admin{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @OneToOne
-    UserHolder userHolder;
+    private UserHolder userHolder;
 
     public Long getId() {
         return id;

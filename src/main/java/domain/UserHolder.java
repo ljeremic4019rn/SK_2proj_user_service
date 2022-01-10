@@ -99,11 +99,11 @@ public class UserHolder {
         this.birthDate = birthDate;
     }
 
-    public boolean isAccessEnabled() {
+    public Boolean getAccessEnabled() {
         return accessEnabled;
     }
 
-    public void setAccessEnabled(boolean accessEnabled) {
+    public void setAccessEnabled(Boolean accessEnabled) {
         this.accessEnabled = accessEnabled;
     }
 
@@ -114,4 +114,6 @@ public class UserHolder {
     public void setRank(Rank rank) {
         this.rank = rank;
     }
+
+
 }

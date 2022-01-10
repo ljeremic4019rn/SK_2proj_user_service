@@ -11,12 +11,10 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long passportNo;
     private Long reservationNo;
-
     @OneToOne
-    UserHolder userHolder;
+    private UserHolder userHolder;
 
     public Long getId() {
         return id;
