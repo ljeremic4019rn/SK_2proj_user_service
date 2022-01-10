@@ -9,7 +9,7 @@ public class ClientDto {
     private Long id;
     private Long passportNo;
     private Long reservationNo;
-    @JsonProperty("userHolder")
+    @JsonProperty("user")
     private UserDto userDto;
 
     public Long getId() {
@@ -36,11 +36,11 @@ public class ClientDto {
         this.reservationNo = reservationNo;
     }
 
-    public UserDto getUserHolderDto() {
+    public UserDto getUserDto() {
         return userDto;
     }
 
-    public void setUserHolderDto(UserDto userDto) {
+    public void setUserDto(UserDto userDto) {
         this.userDto = userDto;
     }
 }

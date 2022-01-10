@@ -42,11 +42,11 @@ public class Manager {
         this.hireDate = hireDate;
     }
 
-    public User getUserHolder() {
+    public User getUser() {
         return user;
     }
 
-    public void setUserHolder(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

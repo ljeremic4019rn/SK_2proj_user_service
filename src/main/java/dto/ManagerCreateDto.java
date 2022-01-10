@@ -9,7 +9,7 @@ public class ManagerCreateDto {
     private Long id;
     private String hotel;
     private Date hireDate;
-    private Long userHolderId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class ManagerCreateDto {
         this.hireDate = hireDate;
     }
 
-    public Long getUserHolderId() {
-        return userHolderId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserHolderId(Long userHolderId) {
-        this.userHolderId = userHolderId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

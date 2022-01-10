@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class AdminDto {
     private Long id;
-    @JsonProperty("userHolder")
+    @JsonProperty("user")
     private UserDto userDto;
 
     public Long getId() {
@@ -18,11 +18,11 @@ public class AdminDto {
         this.id = id;
     }
 
-    public UserDto getUserHolderDto() {
+    public UserDto getUserDto() {
         return userDto;
     }
 
-    public void setUserHolderDto(UserDto userDto) {
+    public void setUserDto(UserDto userDto) {
         this.userDto = userDto;
     }
 }

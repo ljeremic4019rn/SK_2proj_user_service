@@ -15,7 +15,7 @@ public class UserMapper {
     }
 
 
-    public UserDto userHolderToUserHolderDto (User user) {
+    public UserDto userToUserDto (User user) {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
@@ -31,7 +31,7 @@ public class UserMapper {
         return userDto;
     }
 
-    public User userHolderCreateDtoToUserHolder(UserCreateDto userCreateDto) {
+    public User userCreateDtoToUser(UserCreateDto userCreateDto) {
         User user = new User();
         user.setEmail(userCreateDto.getEmail());
         user.setFirstName(userCreateDto.getFirstName());

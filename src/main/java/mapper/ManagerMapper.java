@@ -20,7 +20,7 @@ public class ManagerMapper {
         managerDto.setId(manager.getId());
         managerDto.setHireDate(manager.getHireDate());
         managerDto.setHotel(manager.getHotel());
-        managerDto.setUserHolderDto(userMapper.userHolderToUserHolderDto(manager.getUserHolder()));
+        managerDto.setUserDto(userMapper.userToUserDto(manager.getUser()));
         return managerDto;
     }
 
@@ -29,9 +29,9 @@ public class ManagerMapper {
         manager.setId(managerCreateDtoDto.getId());
         manager.setHireDate(managerCreateDtoDto.getHireDate());
         manager.setHotel(managerCreateDtoDto.getHotel());
-        manager.setUserHolder(userRepository.findById(managerCreateDtoDto.getUserHolderId())
+        manager.setUser(userRepository.findById(managerCreateDtoDto.getUserId())
                 .orElseThrow(() -> new NotFoundException(String
-                        .format("UserHolder with id: %d does not exists.", managerCreateDtoDto.getUserHolderId()))));
+                        .format("User with id: %d does not exists.", managerCreateDtoDto.getUserId()))));
         return manager;
     }
 }

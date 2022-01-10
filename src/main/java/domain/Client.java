@@ -39,11 +39,11 @@ public class Client {
         this.reservationNo = reservationNo;
     }
 
-    public User getUserHolder() {
+    public User getUser() {
         return user;
     }
 
-    public void setUserHolder(User user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }

@@ -18,7 +18,7 @@ public class ClientMapper {
         clientDto.setId(client.getId());
         clientDto.setPassportNo(client.getPassportNo());
         clientDto.setReservationNo(client.getReservationNo());
-        clientDto.setUserHolderDto(userMapper.userHolderToUserHolderDto(client.getUserHolder()));
+        clientDto.setUserDto(userMapper.userToUserDto(client.getUser()));
         return clientDto;
     }
 
@@ -27,9 +27,9 @@ public class ClientMapper {
         client.setId(clientCreateDto.getId());
         client.setPassportNo(clientCreateDto.getPassportNo());
         client.setReservationNo(clientCreateDto.getReservationNo());
-        client.setUserHolder(userRepository.findById(clientCreateDto.getUserHolderId())
+        client.setUser(userRepository.findById(clientCreateDto.getUserId())
                 .orElseThrow(() -> new NotFoundException(String
-                        .format("UserHolder with id: %d does not exists.", clientCreateDto.getUserHolderId()))));
+                        .format("User with id: %d does not exists.", clientCreateDto.getUserId()))));
         return client;
     }
 }

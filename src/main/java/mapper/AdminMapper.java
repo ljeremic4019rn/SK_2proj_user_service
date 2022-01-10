@@ -16,16 +16,16 @@ public class AdminMapper {
     public AdminDto adminToAdminDto(Admin admin){
         AdminDto adminDto = new AdminDto();
         adminDto.setId(admin.getId());
-        adminDto.setUserHolderDto(userMapper.userHolderToUserHolderDto(admin.getUserHolder()));
+        adminDto.setUserDto(userMapper.userToUserDto(admin.getUser()));
         return adminDto;
     }
 
     public Admin adminDtoToAdmin(AdminCreateDto adminCreateDto){
         Admin admin = new Admin();
         admin.setId(adminCreateDto.getId());
-        admin.setUserHolder(userRepository.findById(adminCreateDto.getUserHolderId())
+        admin.setUser(userRepository.findById(adminCreateDto.getUserId())
                 .orElseThrow(() -> new NotFoundException(String
-                        .format("UserHolder with id: %d does not exists.", adminCreateDto.getUserHolderId()))));
+                        .format("User with id: %d does not exists.", adminCreateDto.getUserId()))));
         return admin;
     }
 }

@@ -57,11 +57,11 @@ public class Rank {
         this.discountPercentage = discountPercentage;
     }
 
-    public List<User> getUserHolder() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUserHolder(List<User> user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 }

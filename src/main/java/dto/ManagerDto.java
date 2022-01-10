@@ -11,7 +11,7 @@ public class ManagerDto {
     private Long id;
     private String hotel;
     private Date hireDate;
-    @JsonProperty("userHolder")
+    @JsonProperty("user")
     UserDto userDto;
 
     public Long getId() {
@@ -38,11 +38,11 @@ public class ManagerDto {
         this.hireDate = hireDate;
     }
 
-    public UserDto getUserHolderDto() {
+    public UserDto getUserDto() {
         return userDto;
     }
 
-    public void setUserHolderDto(UserDto userDto) {
+    public void setUserDto(UserDto userDto) {
         this.userDto = userDto;
     }
 }

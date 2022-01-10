@@ -7,7 +7,7 @@ public class ClientCreateDto {
     private Long id;
     private Long passportNo;
     private Long reservationNo;
-    private Long userHolderId;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -33,11 +33,11 @@ public class ClientCreateDto {
         this.reservationNo = reservationNo;
     }
 
-    public Long getUserHolderId() {
-        return userHolderId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserHolderId(Long userHolderId) {
-        this.userHolderId = userHolderId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
