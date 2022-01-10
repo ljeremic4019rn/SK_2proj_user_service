@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class UserHolder {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,11 +19,11 @@ public class UserHolder {
     @ManyToOne
     private Rank rank;
 
-    public UserHolder() {
+    public User() {
     }
 
-    public UserHolder(String email, String firstName, String lastName, String username, String password,
-                      Long phoneNumber, Date birthDate, Rank rank) {
+    public User(String email, String firstName, String lastName, String username, String password,
+                Long phoneNumber, Date birthDate, Rank rank) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;

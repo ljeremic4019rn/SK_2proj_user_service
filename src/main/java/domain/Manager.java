@@ -16,7 +16,7 @@ public class Manager {
     private Date hireDate;
 
     @OneToOne
-    private UserHolder userHolder;
+    private User user;
 
     public Long getId() {
         return id;
@@ -42,11 +42,11 @@ public class Manager {
         this.hireDate = hireDate;
     }
 
-    public UserHolder getUserHolder() {
-        return userHolder;
+    public User getUserHolder() {
+        return user;
     }
 
-    public void setUserHolder(UserHolder userHolder) {
-        this.userHolder = userHolder;
+    public void setUserHolder(User user) {
+        this.user = user;
     }
 }

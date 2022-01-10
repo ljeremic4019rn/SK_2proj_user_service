@@ -1,8 +1,5 @@
 package dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import domain.UserHolder;
-
 /**
  * Created on 09.01.2022. by Andrija inside package dto.
  */

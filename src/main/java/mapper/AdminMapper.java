@@ -1,31 +1,29 @@
 package mapper;
 
 import domain.Admin;
-import domain.Client;
 import dto.AdminCreateDto;
 import dto.AdminDto;
-import dto.ClientCreateDto;
 import exception.NotFoundException;
-import repository.UserHolderRepository;
+import repository.UserRepository;
 
 /**
  * Created on 10.01.2022. by Andrija inside package mapper.
  */
 public class AdminMapper {
-    private UserHolderMapper userHolderMapper;
-    private UserHolderRepository userHolderRepository;
+    private UserMapper userMapper;
+    private UserRepository userRepository;
 
     public AdminDto adminToAdminDto(Admin admin){
         AdminDto adminDto = new AdminDto();
         adminDto.setId(admin.getId());
-        adminDto.setUserHolderDto(userHolderMapper.userHolderToUserHolderDto(admin.getUserHolder()));
+        adminDto.setUserHolderDto(userMapper.userHolderToUserHolderDto(admin.getUserHolder()));
         return adminDto;
     }
 
     public Admin adminDtoToAdmin(AdminCreateDto adminCreateDto){
         Admin admin = new Admin();
         admin.setId(adminCreateDto.getId());
-        admin.setUserHolder(userHolderRepository.findById(adminCreateDto.getUserHolderId())
+        admin.setUserHolder(userRepository.findById(adminCreateDto.getUserHolderId())
                 .orElseThrow(() -> new NotFoundException(String
                         .format("UserHolder with id: %d does not exists.", adminCreateDto.getUserHolderId()))));
         return admin;

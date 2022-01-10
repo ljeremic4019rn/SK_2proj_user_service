@@ -1,7 +1,6 @@
 package domain;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created on 09.01.2022. by Andrija inside package domain.
@@ -14,7 +13,7 @@ public class Client {
     private Long passportNo;
     private Long reservationNo;
     @OneToOne
-    private UserHolder userHolder;
+    private User user;
 
     public Long getId() {
         return id;
@@ -40,11 +39,11 @@ public class Client {
         this.reservationNo = reservationNo;
     }
 
-    public UserHolder getUserHolder() {
-        return userHolder;
+    public User getUserHolder() {
+        return user;
     }
 
-    public void setUserHolder(UserHolder userHolder) {
-        this.userHolder = userHolder;
+    public void setUserHolder(User user) {
+        this.user = user;
     }
 }

@@ -1,38 +1,38 @@
 package service.impl;
 
-import dto.UserHolderCreateDto;
-import dto.UserHolderDto;
-import mapper.UserHolderMapper;
+import dto.UserCreateDto;
+import dto.UserDto;
+import mapper.UserMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import repository.UserHolderRepository;
-import service.UserHolderService;
+import repository.UserRepository;
+import service.UserService;
 
-public class UserServiceImpl implements UserHolderService {
+public class UserServiceImpl implements UserService {
 
    // private TokenService tokenService;
-    private UserHolderRepository userHolderRepository;
-    private UserHolderMapper userHolderMapper;
+    private UserRepository userRepository;
+    private UserMapper userMapper;
 
 
-    public UserServiceImpl(UserHolderRepository userHolderRepository, UserHolderMapper userHolderMapper) {
-        this.userHolderRepository = userHolderRepository;
-        this.userHolderMapper = userHolderMapper;
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
-    public Page<UserHolderDto> findAll(Pageable pageable) {
-        return userHolderRepository.findAll(pageable)
-                .map(userHolderMapper::userHolderToUserHolderDto);
+    public Page<UserDto> findAll(Pageable pageable) {
+        return userRepository.findAll(pageable)
+                .map(userMapper::userHolderToUserHolderDto);
     }
 
     @Override
-    public UserHolderDto add(UserHolderCreateDto userHolderCreateDto) {
+    public UserDto add(UserCreateDto userCreateDto) {
         return null;
     }
 
     @Override
-    public UserHolderDto findById(Long id) {
+    public UserDto findById(Long id) {
         return null;
     }
 

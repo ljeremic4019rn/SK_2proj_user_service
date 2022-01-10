@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class UserHolderDto {
+public class UserDto {
     private Long id;
     private String email;
     private String firstName;

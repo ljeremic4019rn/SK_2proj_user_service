@@ -9,7 +9,7 @@ public class Admin{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    private UserHolder userHolder;
+    private User user;
 
     public Long getId() {
         return id;
@@ -19,11 +19,11 @@ public class Admin{
         this.id = id;
     }
 
-    public UserHolder getUserHolder() {
-        return userHolder;
+    public User getUserHolder() {
+        return user;
     }
 
-    public void setUserHolder(UserHolder userHolder) {
-        this.userHolder = userHolder;
+    public void setUserHolder(User user) {
+        this.user = user;
     }
 }

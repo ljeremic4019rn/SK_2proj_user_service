@@ -13,16 +13,16 @@ public class Rank {
     private Integer points;
     private Integer discountPercentage;
     @OneToMany
-    private List<UserHolder> userHolder;
+    private List<User> user;
 
     public Rank() {
     }
 
-    public Rank(String rank, Integer points, Integer discountPercentage, UserHolder userHolder) {
+    public Rank(String rank, Integer points, Integer discountPercentage, User user) {
         this.rank = rank;
         this.points = points;
         this.discountPercentage = discountPercentage;
-        this.userHolder = new ArrayList<>();
+        this.user = new ArrayList<>();
     }
 
     public Long getId() {
@@ -57,11 +57,11 @@ public class Rank {
         this.discountPercentage = discountPercentage;
     }
 
-    public List<UserHolder> getUserHolder() {
-        return userHolder;
+    public List<User> getUserHolder() {
+        return user;
     }
 
-    public void setUserHolder(List<UserHolder> userHolder) {
-        this.userHolder = userHolder;
+    public void setUserHolder(List<User> user) {
+        this.user = user;
     }
 }

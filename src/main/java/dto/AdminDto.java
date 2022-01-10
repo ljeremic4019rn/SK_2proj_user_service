@@ -1,9 +1,6 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import domain.UserHolder;
-
-import javax.persistence.OneToOne;
 
 /**
  * Created on 09.01.2022. by Andrija inside package dto.
@@ -11,7 +8,7 @@ import javax.persistence.OneToOne;
 public class AdminDto {
     private Long id;
     @JsonProperty("userHolder")
-    private UserHolderDto userHolderDto;
+    private UserDto userDto;
 
     public Long getId() {
         return id;
@@ -21,11 +18,11 @@ public class AdminDto {
         this.id = id;
     }
 
-    public UserHolderDto getUserHolderDto() {
-        return userHolderDto;
+    public UserDto getUserHolderDto() {
+        return userDto;
     }
 
-    public void setUserHolderDto(UserHolderDto userHolderDto) {
-        this.userHolderDto = userHolderDto;
+    public void setUserHolderDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 }

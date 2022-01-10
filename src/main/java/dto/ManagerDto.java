@@ -1,9 +1,7 @@
 package dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import domain.UserHolder;
 
-import javax.persistence.OneToOne;
 import java.util.Date;
 
 /**
@@ -14,7 +12,7 @@ public class ManagerDto {
     private String hotel;
     private Date hireDate;
     @JsonProperty("userHolder")
-    UserHolderDto userHolderDto;
+    UserDto userDto;
 
     public Long getId() {
         return id;
@@ -40,11 +38,11 @@ public class ManagerDto {
         this.hireDate = hireDate;
     }
 
-    public UserHolderDto getUserHolderDto() {
-        return userHolderDto;
+    public UserDto getUserHolderDto() {
+        return userDto;
     }
 
-    public void setUserHolderDto(UserHolderDto userHolderDto) {
-        this.userHolderDto = userHolderDto;
+    public void setUserHolderDto(UserDto userDto) {
+        this.userDto = userDto;
     }
 }
