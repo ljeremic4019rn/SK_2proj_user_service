@@ -1,7 +1,5 @@
 package controller;
 
-
-import dto.AdminDto;
 import dto.ClientCreateDto;
 import dto.ClientDto;
 import io.swagger.annotations.ApiImplicitParam;
