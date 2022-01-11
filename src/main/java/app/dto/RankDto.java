@@ -42,6 +42,7 @@ public class RankDto {
 //        this.points = points;
 //    }
 
+
     public Integer getLowerLimit() {
         return lowerLimit;
     }
@@ -50,8 +51,8 @@ public class RankDto {
         this.lowerLimit = lowerLimit;
     }
 
-    public Integer getUpperLimit(Integer upperLimit) {
-        return this.upperLimit;
+    public Integer getUpperLimit() {
+        return upperLimit;
     }
 
     public void setUpperLimit(Integer upperLimit) {

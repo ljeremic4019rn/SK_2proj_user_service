@@ -33,6 +33,7 @@ public class RankCreateDto {
 //        this.points = points;
 //    }
 
+
     public Integer getLowerLimit() {
         return lowerLimit;
     }
