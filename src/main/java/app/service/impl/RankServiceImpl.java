@@ -58,9 +58,18 @@ public class RankServiceImpl implements RankService {
 
     @Override
     public RankDto editRankById(Long id, RankCreateDto rankCreateDto) {
-        Rank rank = rankMapper.rankCreateDtoToRank(rankCreateDto);
+        Rank rank = rankRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String
+                        .format("Rank with id: %d does not exists.", id)));
+
+        rank.setName(rankCreateDto.getName());
+        rank.setDiscountPercentage(rankCreateDto.getDiscountPercentage());
+        rank.setLowerLimit(rankCreateDto.getLowerLimit());
+        rank.setUpperLimit(rankCreateDto.getUpperLimit());
+
         rankRepository.save(rank);
-        return rankMapper.rankToRankDto(rank);
+        RankDto res = rankMapper.rankToRankDto(rank);
+        return res;
     }
 
 

@@ -45,7 +45,7 @@ public class UserController {
     @ApiOperation(value = "edit user access")
     @PutMapping("/{id}")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<?> editAccessPremission(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, boolean hasAccess){
+    public ResponseEntity<?> updateAccess(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, boolean hasAccess){
         userService.editAccess(id,hasAccess);
         return new ResponseEntity<>(HttpStatus.OK);
     }

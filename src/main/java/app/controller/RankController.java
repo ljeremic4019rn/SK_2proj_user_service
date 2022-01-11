@@ -29,7 +29,7 @@ public class RankController {
         this.rankService = rankService;
     }
 
-    @ApiOperation(value = "Get all administators")
+    @ApiOperation(value = "Get all ranks")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "What page number you want", dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "Number of items to return", dataType = "string", paramType = "query"),
@@ -39,16 +39,26 @@ public class RankController {
                             "Multiple sort criteria are supported.")
     })
     @GetMapping
-    public ResponseEntity<Page<RankDto>> findAll(@ApiIgnore Pageable pageable){
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<Page<RankDto>> findAll(@RequestHeader("Authorization") String authorization, @ApiIgnore Pageable pageable){
         return new ResponseEntity<>(rankService.findAll(pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "edit rank")
     @PutMapping("/{id}")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<RankDto> editAccessPremission(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid RankCreateDto rankCreateDto){
+    public ResponseEntity<RankDto> update(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid RankCreateDto rankCreateDto){
 //        rankService.editRankById(id, rankCreateDto);
 //        return new ResponseEntity<>(HttpStatus.OK);
         return new ResponseEntity<>(rankService.editRankById(id,rankCreateDto), HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "add rank")
+    @PostMapping
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<RankDto> addRank(@RequestHeader("Authorization") String authorization, @RequestBody @Valid RankCreateDto rankCreateDto){
+//        rankService.editRankById(id, rankCreateDto);
+//        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(rankService.add(rankCreateDto), HttpStatus.OK);
     }
 }
