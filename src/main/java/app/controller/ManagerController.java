@@ -38,7 +38,7 @@ public class ManagerController {
         return new ResponseEntity<>(managerService.findAll(pageable), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(value = "Register")
     public ResponseEntity<ManagerDto> add(@RequestBody @Valid ManagerCreateDto managerCreateDto){
         return new ResponseEntity<>(managerService.add(managerCreateDto), HttpStatus.CREATED);
     }

@@ -12,7 +12,7 @@ public class RankMapper {
     public RankDto rankToRankDto (Rank rank) {
         RankDto rankDto = new RankDto();
         rankDto.setId(rank.getId());
-        rankDto.setRank(rank.getRank());
+        rankDto.setName(rank.getName());
         rankDto.setPoints(rank.getPoints());
         rankDto.setDiscountPercentage(rank.getDiscountPercentage());
         return rankDto;
@@ -20,7 +20,7 @@ public class RankMapper {
     public Rank rankCreateDtoToRank(RankCreateDto rankCreateDto){
         Rank rank = new Rank();
        // rank.setId(rankCreateDto.getId());
-        rank.setRank(rankCreateDto.getRank());
+        rank.setName(rankCreateDto.getName());
         rank.setPoints(rankCreateDto.getPoints());
         rank.setDiscountPercentage(rankCreateDto.getDiscountPercentage());
 

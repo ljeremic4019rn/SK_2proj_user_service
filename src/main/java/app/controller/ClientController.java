@@ -40,7 +40,7 @@ public class ClientController {
         return new ResponseEntity<>(clientService.findAll(pageable), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(value = "Register")
     public ResponseEntity<ClientDto> add(@RequestBody @Valid ClientCreateDto clientCreateDto){
         return new ResponseEntity<>(clientService.add(clientCreateDto), HttpStatus.CREATED);
     }

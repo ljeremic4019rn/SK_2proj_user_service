@@ -28,7 +28,7 @@ public class AdminController {
     }
 
 
-    @ApiOperation(value = "Get all clients")
+    @ApiOperation(value = "Get all administators")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "What page number you want", dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "Number of items to return", dataType = "string", paramType = "query"),
@@ -56,5 +56,6 @@ public class AdminController {
         adminService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
 }

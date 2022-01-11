@@ -23,7 +23,7 @@ public class User {
     }
 
     public User(String email, String firstName, String lastName, String username, String password,
-                Long phoneNumber, Date birthDate, Rank rank) {
+                Long phoneNumber, Date birthDate, Rank rank, String role) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,6 +33,7 @@ public class User {
         this.birthDate = birthDate;
         this.accessEnabled = true;
         this.rank = rank;
+        this.role = role;
     }
 
     public Long getId() {

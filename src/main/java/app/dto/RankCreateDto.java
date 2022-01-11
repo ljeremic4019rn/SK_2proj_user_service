@@ -4,8 +4,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 public class RankCreateDto {
-    @NotEmpty(message = "rank cant be empty")
-    private String rank;
+    @NotEmpty(message = "name cant be empty")
+    private String name;
     @Min(value = 0, message = "The value must be positive")
     private Integer points;
     @Min(value = 0, message = "The value must be positive")
@@ -13,12 +13,12 @@ public class RankCreateDto {
 
 
 
-    public String getRank() {
-        return rank;
+    public String getName() {
+        return name;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getPoints() {

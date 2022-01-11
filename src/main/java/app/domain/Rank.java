@@ -9,7 +9,7 @@ public class Rank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String rank;
+    private String name;
     private Integer points;
     private Integer discountPercentage;
     @OneToMany
@@ -18,8 +18,8 @@ public class Rank {
     public Rank() {
     }
 
-    public Rank(String rank, Integer points, Integer discountPercentage, User user) {
-        this.rank = rank;
+    public Rank(String name, Integer points, Integer discountPercentage) {
+        this.name = name;
         this.points = points;
         this.discountPercentage = discountPercentage;
         this.user = new ArrayList<>();
@@ -33,12 +33,12 @@ public class Rank {
         this.id = id;
     }
 
-    public String getRank() {
-        return rank;
+    public String getName() {
+        return name;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getPoints() {

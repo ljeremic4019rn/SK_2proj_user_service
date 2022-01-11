@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 public class RankDto {
     private Long id;
     @NotEmpty(message = "rank cant be empty")
-    private String rank;
+    private String name;
     @Min(value = 0, message = "The value must be positive")
     private Integer points;
     @Min(value = 0, message = "The value must be positive")
@@ -22,12 +22,12 @@ public class RankDto {
         this.id = id;
     }
 
-    public String getRank() {
-        return rank;
+    public String getName() {
+        return name;
     }
 
-    public void setRank(String rank) {
-        this.rank = rank;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getPoints() {

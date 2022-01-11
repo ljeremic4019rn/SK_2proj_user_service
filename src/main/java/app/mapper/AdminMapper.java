@@ -15,6 +15,11 @@ public class AdminMapper {
     private UserMapper userMapper;
     private UserRepository userRepository;
 
+    public AdminMapper(UserMapper userMapper, UserRepository userRepository) {
+        this.userMapper = userMapper;
+        this.userRepository = userRepository;
+    }
+
     public AdminDto adminToAdminDto(Admin admin){
         AdminDto adminDto = new AdminDto();
         adminDto.setId(admin.getId());
