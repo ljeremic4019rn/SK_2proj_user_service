@@ -18,5 +18,6 @@ public interface RankService {
 
     void deleteById(Long id);
 
-    RankDto editRankById(Long id, RankCreateDto rankCreateDto);
+    void editRankByName(String name, RankCreateDto rankCreateDto);
+
 }

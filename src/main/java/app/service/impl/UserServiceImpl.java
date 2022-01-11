@@ -88,7 +88,6 @@ public class UserServiceImpl implements UserService {
          user = userRepository.findById((id))
                  .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
 
-
          user.setAccessEnabled(hasAccess);
          userRepository.save(user);
 

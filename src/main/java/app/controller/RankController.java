@@ -45,12 +45,11 @@ public class RankController {
     }
 
     @ApiOperation(value = "edit rank")
-    @PutMapping("/{id}")
+    @PutMapping("/{name}")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<RankDto> update(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid RankCreateDto rankCreateDto){
-//        rankService.editRankById(id, rankCreateDto);
-//        return new ResponseEntity<>(HttpStatus.OK);
-        return new ResponseEntity<>(rankService.editRankById(id,rankCreateDto), HttpStatus.OK);
+    public ResponseEntity<?> updateRank(@RequestHeader("Authorization") String authorization, String name, @RequestBody @Valid RankCreateDto rankCreateDto){
+        rankService.editRankByName(name, rankCreateDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @ApiOperation(value = "add rank")
