@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import app.repository.UserRepository;
 import app.security.service.TokenService;
 import app.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,13 +59,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public TokenResponseDto login(TokenRequestDto tokenRequestDto) {
+    public Object login(TokenRequestDto tokenRequestDto) {
         //Try to find active user for specified credentials
         User user = userRepository
                 .findUserByEmailAndPassword(tokenRequestDto.getEmail(), tokenRequestDto.getPassword())
                 .orElseThrow(() -> new NotFoundException(String
                         .format("User with username: %s and password: %s not found.", tokenRequestDto.getEmail(),
                                 tokenRequestDto.getPassword())));
+
+        if (!user.getAccessEnabled()){
+            TokenResponseDto tokenResponseDto = new TokenResponseDto();
+            tokenResponseDto.setToken("kurac");
+            return HttpStatus.FORBIDDEN;
+        }
+
         //Create token payload
         Claims claims = Jwts.claims();
         claims.put("id", user.getId());
@@ -72,4 +80,19 @@ public class UserServiceImpl implements UserService {
         //Generate token
         return new TokenResponseDto(tokenService.generate(claims));
     }
+
+    @Override
+    public void editAccess(Long id, boolean hasAccess) {
+        User user;
+
+         user = userRepository.findById((id))
+                 .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
+
+
+         user.setAccessEnabled(hasAccess);
+         userRepository.save(user);
+
+
+    }
+
 }

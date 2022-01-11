@@ -36,6 +36,7 @@ public class ClientController {
                             "Default sort order is ascending. " +
                             "Multiple sort criteria are supported.")
     })
+    @GetMapping
     public ResponseEntity<Page<ClientDto>> findAll(@ApiIgnore Pageable pageable){
         return new ResponseEntity<>(clientService.findAll(pageable), HttpStatus.OK);
     }

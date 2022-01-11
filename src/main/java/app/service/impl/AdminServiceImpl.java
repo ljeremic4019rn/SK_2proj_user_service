@@ -3,8 +3,11 @@ package app.service.impl;
 import app.domain.Admin;
 import app.dto.AdminCreateDto;
 import app.dto.AdminDto;
+import app.dto.ManagerDto;
 import app.exception.NotFoundException;
 import app.mapper.AdminMapper;
+import app.mapper.ManagerMapper;
+import app.repository.ManagerRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import app.repository.AdminRepository;
@@ -21,6 +24,10 @@ public class AdminServiceImpl implements AdminService {
 
     private AdminRepository adminRepository;
     private AdminMapper adminMapper;
+
+    private ManagerRepository managerRepository;
+    private ManagerMapper managerMapper;
+
 
     public AdminServiceImpl(AdminRepository adminRepository, AdminMapper adminMapper) {
         this.adminRepository = adminRepository;
@@ -51,4 +58,5 @@ public class AdminServiceImpl implements AdminService {
     public void deleteById(Long id) {
         adminRepository.deleteById((id));
     }
+
 }

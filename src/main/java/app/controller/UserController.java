@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.User;
 import app.dto.TokenRequestDto;
 import app.dto.TokenResponseDto;
 import app.dto.UserDto;
@@ -29,14 +30,23 @@ public class UserController {
 
     @GetMapping
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<Page<UserDto>> getAllUsers(@RequestHeader("Authorization") String authorization,
-                                                     Pageable pageable) {
+    public ResponseEntity<Page<UserDto>> getAllUsers(@RequestHeader("Authorization") String authorization, Pageable pageable) {
         return new ResponseEntity<>(userService.findAll(pageable), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Login")
     @PostMapping("/login")
-    public ResponseEntity<TokenResponseDto> loginUser(@RequestBody @Valid TokenRequestDto tokenRequestDto) {
+    public ResponseEntity<?> loginUser(@RequestBody @Valid TokenRequestDto tokenRequestDto) {
+//        ResponseEntity<?> responseEntity = new ResponseEntity(userService.login(tokenRequestDto), HttpStatus.OK);
         return new ResponseEntity<>(userService.login(tokenRequestDto), HttpStatus.OK);
+//        return responseEntity;
+    }
+
+    @ApiOperation(value = "edit user access")
+    @PutMapping("/{id}")
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<?> editAccessPremission(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, boolean hasAccess){
+        userService.editAccess(id,hasAccess);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

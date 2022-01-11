@@ -1,9 +1,11 @@
 package app.controller;
 
 
+import app.domain.Admin;
 import app.dto.AdminCreateDto;
 import app.dto.AdminDto;
 import app.service.AdminService;
+import app.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +25,7 @@ public class AdminController {
 
     private AdminService adminService;
 
+
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
@@ -37,6 +40,7 @@ public class AdminController {
                             "Default sort order is ascending. " +
                             "Multiple sort criteria are supported.")
     })
+    @GetMapping
     public ResponseEntity<Page<AdminDto>> findAll(@ApiIgnore Pageable pageable){
         return new ResponseEntity<>(adminService.findAll(pageable), HttpStatus.OK);
     }
@@ -56,6 +60,7 @@ public class AdminController {
         adminService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 
 
 }

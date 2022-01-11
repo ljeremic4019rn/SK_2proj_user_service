@@ -1,7 +1,6 @@
 package app.service;
 
 import app.dto.TokenRequestDto;
-import app.dto.TokenResponseDto;
 import app.dto.UserCreateDto;
 import app.dto.UserDto;
 import org.springframework.data.domain.Page;
@@ -17,8 +16,7 @@ public interface UserService {
 
     void deleteById(Long id);
 
-    TokenResponseDto login(TokenRequestDto tokenRequestDto);
+    Object login(TokenRequestDto tokenRequestDto);
 
-    //token todo dodaj jos stvari/ promeni format kako izgleda
-
+    void editAccess (Long id, boolean hasAccess);
 }

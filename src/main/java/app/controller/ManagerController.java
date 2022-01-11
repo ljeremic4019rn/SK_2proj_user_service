@@ -25,7 +25,7 @@ public class ManagerController {
         this.managerService = managerService;
     }
 
-    @ApiOperation(value = "Get all clients")
+    @ApiOperation(value = "Get all managers")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "What page number you want", dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "Number of items to return", dataType = "string", paramType = "query"),
@@ -34,6 +34,7 @@ public class ManagerController {
                             "Default sort order is ascending. " +
                             "Multiple sort criteria are supported.")
     })
+    @GetMapping
     public ResponseEntity<Page<ManagerDto>> findAll(@ApiIgnore Pageable pageable){
         return new ResponseEntity<>(managerService.findAll(pageable), HttpStatus.OK);
     }

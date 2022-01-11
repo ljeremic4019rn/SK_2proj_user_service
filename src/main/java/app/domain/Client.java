@@ -12,7 +12,7 @@ public class Client {
     private Long id;
     private Long passportNo;
     private Long reservationNo;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
 
     public Long getId() {

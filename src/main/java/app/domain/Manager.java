@@ -15,7 +15,7 @@ public class Manager {
     private String hotel;
     private Date hireDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
 
     public Long getId() {

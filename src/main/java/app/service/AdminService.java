@@ -2,6 +2,7 @@ package app.service;
 
 import app.dto.AdminCreateDto;
 import app.dto.AdminDto;
+import app.dto.ManagerDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +18,5 @@ public interface AdminService {
     AdminDto findById(Long id);
 
     void deleteById(Long id);
+
 }
