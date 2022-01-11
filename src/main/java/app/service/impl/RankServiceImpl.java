@@ -56,11 +56,17 @@ public class RankServiceImpl implements RankService {
         rankRepository.deleteById((id));
     }
 
+
     @Override
-    public RankDto editRankById(Long id, RankCreateDto rankCreateDto) {
-        Rank rank = rankMapper.rankCreateDtoToRank(rankCreateDto);
+    public void editRankByName(String name, RankCreateDto rankCreateDto) {
+        Rank rank = rankRepository.findRankByName((name))
+                .orElseThrow(() -> new NotFoundException(String.format("User with name: %s not found.", name)));
+
+        rank.setUpperLimit(rankCreateDto.getUpperLimit());
+        rank.setLowerLimit(rankCreateDto.getLowerLimit());
+        rank.setDiscountPercentage(rankCreateDto.getDiscountPercentage());
+        rank.setName(rankCreateDto.getName());
         rankRepository.save(rank);
-        return rankMapper.rankToRankDto(rank);
     }
 
 

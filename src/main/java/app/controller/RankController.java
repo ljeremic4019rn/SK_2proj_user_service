@@ -29,7 +29,7 @@ public class RankController {
         this.rankService = rankService;
     }
 
-    @ApiOperation(value = "Get all administators")
+    @ApiOperation(value = "Get all ranks")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "What page number you want", dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "size", value = "Number of items to return", dataType = "string", paramType = "query"),
@@ -46,9 +46,9 @@ public class RankController {
     @ApiOperation(value = "edit rank")
     @PutMapping("/{id}")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<RankDto> editAccessPremission(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid RankCreateDto rankCreateDto){
-//        rankService.editRankById(id, rankCreateDto);
-//        return new ResponseEntity<>(HttpStatus.OK);
-        return new ResponseEntity<>(rankService.editRankById(id,rankCreateDto), HttpStatus.OK);
+    public ResponseEntity<?> editAccessPremission(@RequestHeader("Authorization") String authorization, String name, @RequestBody @Valid RankCreateDto rankCreateDto){
+        rankService.editRankByName(name, rankCreateDto);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }
