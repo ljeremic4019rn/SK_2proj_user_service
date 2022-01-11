@@ -1,5 +1,6 @@
 package app.service;
 
+import app.domain.Rank;
 import app.dto.RankCreateDto;
 import app.dto.RankDto;
 import org.springframework.data.domain.Page;
@@ -16,4 +17,6 @@ public interface RankService {
     RankDto findById(Long id);
 
     void deleteById(Long id);
+
+    RankDto editRankById(Long id, RankCreateDto rankCreateDto);
 }

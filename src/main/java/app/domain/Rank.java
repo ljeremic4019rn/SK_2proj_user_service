@@ -10,7 +10,9 @@ public class Rank {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer points;
+//    private Integer points;
+    private Integer lowerLimit;
+    private Integer upperLimit;
     private Integer discountPercentage;
     @OneToMany
     private List<User> user;
@@ -18,11 +20,29 @@ public class Rank {
     public Rank() {
     }
 
-    public Rank(String name, Integer points, Integer discountPercentage) {
+    public Rank(String name, Integer lowerLimit, Integer upperLimit, Integer discountPercentage) {
         this.name = name;
-        this.points = points;
+        this.lowerLimit = lowerLimit;
+        this.upperLimit = upperLimit;
         this.discountPercentage = discountPercentage;
         this.user = new ArrayList<>();
+    }
+
+
+    public Integer getLowerLimit() {
+        return lowerLimit;
+    }
+
+    public void setLowerLimit(Integer lowerLimit) {
+        this.lowerLimit = lowerLimit;
+    }
+
+    public Integer getUpperLimit() {
+        return upperLimit;
+    }
+
+    public void setUpperLimit(Integer upperLimit) {
+        this.upperLimit = upperLimit;
     }
 
     public Long getId() {
@@ -41,13 +61,13 @@ public class Rank {
         this.name = name;
     }
 
-    public Integer getPoints() {
-        return points;
-    }
-
-    public void setPoints(Integer points) {
-        this.points = points;
-    }
+//    public Integer getPoints() {
+//        return points;
+//    }
+//
+//    public void setPoints(Integer points) {
+//        this.points = points;
+//    }
 
     public Integer getDiscountPercentage() {
         return discountPercentage;

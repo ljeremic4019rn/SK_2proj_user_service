@@ -37,9 +37,9 @@ public class TestDataRunner implements CommandLineRunner {
 //        roleRepository.save(roleUser);
 //        roleRepository.save(roleAdmin);
         //Insert rank
-        Rank rankGold = new Rank("GOLD", 20, 30);
-        Rank rankSilver = new Rank("SILVER", 15, 20);
-        Rank rankBronze = new Rank("BRONZE", 10, 10);
+        Rank rankGold = new Rank("GOLD", 20,50, 30);
+        Rank rankSilver = new Rank("SILVER", 10,20, 20);
+        Rank rankBronze = new Rank("BRONZE", 0,10, 10);
 
         //Insert User
         User useradmin = new User("admin@gmail.com", "Admin", "Adminic", "admin", "admin",

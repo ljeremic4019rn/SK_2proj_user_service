@@ -7,7 +7,11 @@ public class RankCreateDto {
     @NotEmpty(message = "name cant be empty")
     private String name;
     @Min(value = 0, message = "The value must be positive")
-    private Integer points;
+//    private Integer points;
+//    @Min(value = 0, message = "The value must be positive")
+    private Integer lowerLimit;
+    @Min(value = 0, message = "The value must be positive")
+    private Integer upperLimit;
     @Min(value = 0, message = "The value must be positive")
     private Integer discountPercentage;
 
@@ -21,12 +25,28 @@ public class RankCreateDto {
         this.name = name;
     }
 
-    public Integer getPoints() {
-        return points;
+//    public Integer getPoints() {
+//        return points;
+//    }
+//
+//    public void setPoints(Integer points) {
+//        this.points = points;
+//    }
+
+    public Integer getLowerLimit() {
+        return lowerLimit;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
+    public void setLowerLimit(Integer lowerLimit) {
+        this.lowerLimit = lowerLimit;
+    }
+
+    public Integer getUpperLimit() {
+        return upperLimit;
+    }
+
+    public void setUpperLimit(Integer upperLimit) {
+        this.upperLimit = upperLimit;
     }
 
     public Integer getDiscountPercentage() {

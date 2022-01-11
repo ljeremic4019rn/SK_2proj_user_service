@@ -55,4 +55,13 @@ public class RankServiceImpl implements RankService {
     public void deleteById(Long id) {
         rankRepository.deleteById((id));
     }
+
+    @Override
+    public RankDto editRankById(Long id, RankCreateDto rankCreateDto) {
+        Rank rank = rankMapper.rankCreateDtoToRank(rankCreateDto);
+        rankRepository.save(rank);
+        return rankMapper.rankToRankDto(rank);
+    }
+
+
 }
