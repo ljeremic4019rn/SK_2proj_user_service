@@ -41,7 +41,7 @@ public class AdminController {
         return new ResponseEntity<>(adminService.findAll(pageable), HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping(value = "Register")
     public ResponseEntity<AdminDto> add(@RequestBody @Valid AdminCreateDto adminCreateDto){
         return new ResponseEntity<>(adminService.add(adminCreateDto), HttpStatus.CREATED);
     }

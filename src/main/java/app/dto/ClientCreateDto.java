@@ -41,7 +41,6 @@ public class ClientCreateDto {
         this.reservationNo = reservationNo;
     }
 
-
     public String getEmail() {
         return email;
     }
