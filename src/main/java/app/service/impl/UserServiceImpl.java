@@ -22,6 +22,9 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.List;
+
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -34,10 +37,12 @@ public class UserServiceImpl implements UserService {
     private String destinationResetPass;
     private String destinationVerifyMail;
     private MessageHelper messageHelper;
+    
+    List<UserPasswordDto> newPasswordList;
 
     public UserServiceImpl(TokenService tokenService, UserRepository userRepository, UserMapper userMapper,
                            JmsTemplate jmsTemplate, @Value("${destination.resetPass}") String  destinationResetPass, @Value("${destination.verifyMail}") String  destinationVerifyMail,
-                           MessageHelper messageHelper) {
+                           MessageHelper messageHelper, List<UserPasswordDto> newPasswordList) {
         this.tokenService = tokenService;
         this.userRepository = userRepository;
         this.userMapper = userMapper;
@@ -45,6 +50,7 @@ public class UserServiceImpl implements UserService {
         this.destinationResetPass = destinationResetPass;
         this.destinationVerifyMail = destinationVerifyMail;
         this.messageHelper = messageHelper;
+        this.newPasswordList = newPasswordList;
     }
 
     @Override
@@ -115,24 +121,32 @@ public class UserServiceImpl implements UserService {
         user.setVerifiedMail(true);
         userRepository.save(user);
     }
-    private String tmpPassword;
+    
     @Override
     public void changePassword(Long id, UserPasswordDto userPasswordDto) {
         User user = userRepository
                     .findById(id)
                     .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
         jmsTemplate.convertAndSend(destinationResetPass, messageHelper.createTextMessage(userPasswordDto));
-        tmpPassword = userPasswordDto.getPassword();
-
+        newPasswordList.add(userPasswordDto);        
     }
-
+    
     @Override
     public void saveNewPassword(Long id) {
         User user = userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
-        user.setPassword(tmpPassword);
-        tmpPassword="";
+        
+        UserPasswordDto userTmp = null;
+        for (UserPasswordDto us:newPasswordList) {
+            if(us.getId().equals(user.getId())){
+                userTmp = us;
+                user.setPassword(us.getPassword());
+                break;
+            }
+        }
+        newPasswordList.remove(userTmp);
+        
         userRepository.save(user);
     }
 
