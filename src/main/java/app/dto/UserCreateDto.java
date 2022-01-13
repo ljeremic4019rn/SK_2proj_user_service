@@ -26,6 +26,15 @@ public class UserCreateDto {
     private Boolean accessEnabled;
     private Long rankId;
     private String role;
+    private boolean verifiedMail;
+
+    public boolean isVerifiedMail() {
+        return verifiedMail;
+    }
+
+    public void setVerifiedMail(boolean verifiedMail) {
+        this.verifiedMail = verifiedMail;
+    }
 
     public String getEmail() {
         return email;

@@ -19,11 +19,12 @@ public class User {
     @ManyToOne
     private Rank rank;
     private String role;
+    private boolean verifiedMail;
     public User() {
     }
 
     public User(String email, String firstName, String lastName, String username, String password,
-                Long phoneNumber, Date birthDate, Rank rank, String role) {
+                Long phoneNumber, Date birthDate, Rank rank, String role, boolean verifiedMail) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -34,6 +35,15 @@ public class User {
         this.accessEnabled = true;
         this.rank = rank;
         this.role = role;
+        this.verifiedMail = false;
+    }
+
+    public boolean isVerifiedMail() {
+        return verifiedMail;
+    }
+
+    public void setVerifiedMail(boolean verifiedMail) {
+        this.verifiedMail = verifiedMail;
     }
 
     public Long getId() {

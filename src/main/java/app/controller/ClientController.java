@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.ClientCreateDto;
 import app.dto.ClientDto;
+import app.security.CheckSecurity;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -56,5 +57,7 @@ public class ClientController {
         clientService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
 
