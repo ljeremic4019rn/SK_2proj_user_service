@@ -3,12 +3,16 @@ package app.service.impl;
 import app.domain.Client;
 import app.dto.ClientCreateDto;
 import app.dto.ClientDto;
+import app.dto.notificationDtos.VerifyMailDto;
 import app.exception.NotFoundException;
 import app.mapper.ClientMapper;
+import app.messageHelper.MessageHelper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import app.repository.ClientRepository;
 import app.service.ClientService;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,9 +26,18 @@ public class ClientServiceImpl implements ClientService {
     private ClientRepository clientRepository;
     private ClientMapper clientMapper;
 
-    public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper) {
+    private String destinationVerifyMail;
+    private MessageHelper messageHelper;
+    private JmsTemplate jmsTemplate;
+
+
+    public ClientServiceImpl(ClientRepository clientRepository, ClientMapper clientMapper,
+                             @Value("${destination.verifyMail}") String  destinationVerifyMail, MessageHelper messageHelper, JmsTemplate jmsTemplate) {
         this.clientRepository = clientRepository;
         this.clientMapper = clientMapper;
+        this.destinationVerifyMail = destinationVerifyMail;
+        this.messageHelper = messageHelper;
+        this.jmsTemplate = jmsTemplate;
     }
 
     @Override
@@ -36,6 +49,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientDto add(ClientCreateDto clientCreateDto) {
         Client client = clientMapper.clientCreateDtoToClient(clientCreateDto);
+
+        VerifyMailDto verifyMailDto = new VerifyMailDto(clientCreateDto.getFirstName(), clientCreateDto.getLastName(), clientCreateDto.getEmail());
+        jmsTemplate.convertAndSend(destinationVerifyMail, messageHelper.createTextMessage(verifyMailDto));
+
         clientRepository.save(client);
         return clientMapper.clientToClientDto(client);
     }

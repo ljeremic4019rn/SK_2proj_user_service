@@ -17,7 +17,15 @@ public class UserDto {
     @JsonProperty("rank")
     private RankDto rankDto;
     private String role;
+    private boolean verifiedMail;
 
+    public boolean isVerifiedMail() {
+        return verifiedMail;
+    }
+
+    public void setVerifiedMail(boolean verifiedMail) {
+        this.verifiedMail = verifiedMail;
+    }
 
     public Long getId() {
         return id;

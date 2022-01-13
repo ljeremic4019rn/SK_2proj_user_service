@@ -43,7 +43,7 @@ public class TestDataRunner implements CommandLineRunner {
 
         //Insert User
         User useradmin = new User("admin@gmail.com", "Admin", "Adminic", "admin", "admin",
-                1234567890L, new SimpleDateFormat("dd/MM/yyyy").parse("03/08/2000"), rankGold, "ROLE_ADMIN");
+                1234567890L, new SimpleDateFormat("dd/MM/yyyy").parse("03/08/2000"), rankGold, "ROLE_ADMIN",true);
         //Insert admin
         Admin admin = new Admin();
         admin.setUser(useradmin);

@@ -5,16 +5,20 @@ import app.dto.TokenRequestDto;
 import app.dto.TokenResponseDto;
 import app.dto.UserCreateDto;
 import app.dto.UserDto;
+import app.dto.notificationDtos.UserPasswordDto;
 import app.exception.NotFoundException;
+import app.messageHelper.MessageHelper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import app.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import app.repository.UserRepository;
 import app.security.service.TokenService;
 import app.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,11 +30,21 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
     private UserMapper userMapper;
 
+    private JmsTemplate jmsTemplate;
+    private String destinationResetPass;
+    private String destinationVerifyMail;
+    private MessageHelper messageHelper;
 
-    public UserServiceImpl(TokenService tokenService, UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(TokenService tokenService, UserRepository userRepository, UserMapper userMapper,
+                           JmsTemplate jmsTemplate, @Value("${destination.resetPass}") String  destinationResetPass, @Value("${destination.verifyMail}") String  destinationVerifyMail,
+                           MessageHelper messageHelper) {
         this.tokenService = tokenService;
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.jmsTemplate = jmsTemplate;
+        this.destinationResetPass = destinationResetPass;
+        this.destinationVerifyMail = destinationVerifyMail;
+        this.messageHelper = messageHelper;
     }
 
     @Override
@@ -85,13 +99,39 @@ public class UserServiceImpl implements UserService {
     public void editAccess(Long id, boolean hasAccess) {
         User user;
 
-         user = userRepository.findById((id))
+         user = userRepository
+                 .findById(id)
                  .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
-
          user.setAccessEnabled(hasAccess);
          userRepository.save(user);
+    }
 
+    @Override
+    public void verifyMail(String email) {
+        User user = userRepository
+                .findUserByEmail(email)
+                .orElseThrow(() -> new NotFoundException(String.format("User with email: %s not found.", email)));
 
+        user.setVerifiedMail(true);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void changePassword(Long id, UserPasswordDto userPasswordDto) {
+        User user = userRepository
+                    .findById(id)
+                    .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
+        jmsTemplate.convertAndSend(destinationResetPass, messageHelper.createTextMessage(userPasswordDto));
+        user.setPassword(userPasswordDto.getPassword());
+
+    }
+
+    @Override
+    public void saveNewPassword(Long id) {
+        User user = userRepository
+                .findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
+        userRepository.save(user);
     }
 
 }

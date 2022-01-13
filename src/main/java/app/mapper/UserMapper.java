@@ -22,10 +22,10 @@ public class UserMapper {
         UserDto userDto = new UserDto();
         userDto.setId(user.getId());
         userDto.setEmail(user.getEmail());
+        userDto.setVerifiedMail(user.isVerifiedMail());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
         userDto.setUsername(user.getUsername());
-
         userDto.setPassword(user.getPassword());
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setBirthDate(user.getBirthDate());
@@ -41,6 +41,7 @@ public class UserMapper {
         user.setFirstName(userCreateDto.getFirstName());
         user.setLastName(userCreateDto.getLastName());
         user.setUsername(userCreateDto.getUsername());
+        user.setVerifiedMail(userCreateDto.isVerifiedMail());
         user.setPassword(userCreateDto.getPassword());
         user.setPhoneNumber(userCreateDto.getPhoneNumber());
         user.setBirthDate(userCreateDto.getBirthDate());
