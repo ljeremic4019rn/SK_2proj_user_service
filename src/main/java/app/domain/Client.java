@@ -15,6 +15,15 @@ public class Client {
     @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
 
+    public Client() {
+    }
+
+    public Client(Long passportNo, Long reservationNo, User user) {
+        this.passportNo = passportNo;
+        this.reservationNo = reservationNo;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

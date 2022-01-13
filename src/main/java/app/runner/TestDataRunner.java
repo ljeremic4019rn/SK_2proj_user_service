@@ -1,6 +1,7 @@
 package app.runner;
 
 import app.domain.Admin;
+import app.domain.Client;
 import app.domain.Rank;
 import app.domain.User;
 import app.repository.*;
@@ -41,19 +42,22 @@ public class TestDataRunner implements CommandLineRunner {
         Rank rankSilver = new Rank("SILVER", 10,20, 20);
         Rank rankBronze = new Rank("BRONZE", 0,10, 10);
 
-        //Insert User
-        User useradmin = new User("admin@gmail.com", "Admin", "Adminic", "admin", "admin",
-                1234567890L, new SimpleDateFormat("dd/MM/yyyy").parse("03/08/2000"), rankGold, "ROLE_ADMIN");
-        //Insert admin
-        Admin admin = new Admin();
-        admin.setUser(useradmin);
-
         rankRepository.save(rankGold);
         rankRepository.save(rankSilver);
         rankRepository.save(rankBronze);
-        userRepository.save(useradmin);
-        adminRepository.save(admin);
 
+        //Insert User
+        User userAdmin = new User("admin@gmail.com", "Admin", "Adminic", "admin", "admin",
+                1234567890L, new SimpleDateFormat("dd/MM/yyyy").parse("03/08/2000"), rankGold, "ROLE_ADMIN");
+//        User userClient = new User("client@gmail.com", "Client", "Clientic", "client", "client",
+//                178945624L, new SimpleDateFormat("dd/MM/yyyy").parse("12/08/2000"), rankGold, "ROLE_CLIENT");
+        userRepository.save(userAdmin);
+//        userRepository.save(userClient);
+        //Insert admin
+        Admin admin = new Admin();
+        admin.setUser(userAdmin);
+        adminRepository.save(admin);
+//        Client client = new Client()
 
     }
 }
