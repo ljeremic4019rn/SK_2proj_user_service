@@ -23,6 +23,18 @@ public class User {
     public User() {
     }
 
+    public User(String email, String firstName, String lastName, String username, String password, Long phoneNumber, Date birthDate, Rank rank, String role) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.rank = rank;
+        this.role = role;
+    }
+
     public User(String email, String firstName, String lastName, String username, String password,
                 Long phoneNumber, Date birthDate, Rank rank, String role, boolean verifiedMail) {
         this.email = email;

@@ -115,14 +115,14 @@ public class UserServiceImpl implements UserService {
         user.setVerifiedMail(true);
         userRepository.save(user);
     }
-
+    private String tmpPassword;
     @Override
     public void changePassword(Long id, UserPasswordDto userPasswordDto) {
         User user = userRepository
                     .findById(id)
                     .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
         jmsTemplate.convertAndSend(destinationResetPass, messageHelper.createTextMessage(userPasswordDto));
-        user.setPassword(userPasswordDto.getPassword());
+        tmpPassword = userPasswordDto.getPassword();
 
     }
 
@@ -131,6 +131,8 @@ public class UserServiceImpl implements UserService {
         User user = userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("User with id: %d not found.", id)));
+        user.setPassword(tmpPassword);
+        tmpPassword="";
         userRepository.save(user);
     }
 
