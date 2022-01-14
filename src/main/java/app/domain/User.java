@@ -30,7 +30,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
+        this.birthDate = LocalDate.now();
         this.accessEnabled = true;
         this.role = role;
         this.verifiedMail = false;
