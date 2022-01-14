@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.ManagerCreateDto;
 import app.dto.ManagerDto;
+import app.security.CheckSecurity;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -35,22 +36,25 @@ public class ManagerController {
                             "Multiple sort criteria are supported.")
     })
     @GetMapping
-    public ResponseEntity<Page<ManagerDto>> findAll(@ApiIgnore Pageable pageable){
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<Page<ManagerDto>> findAll(@RequestHeader("Authorization") String authorization, @ApiIgnore Pageable pageable){
         return new ResponseEntity<>(managerService.findAll(pageable), HttpStatus.OK);
     }
 
-    @PostMapping(value = "Register")
+    @PostMapping(value = "register")
     public ResponseEntity<ManagerDto> add(@RequestBody @Valid ManagerCreateDto managerCreateDto){
         return new ResponseEntity<>(managerService.add(managerCreateDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ManagerDto> findById(@PathVariable("id") Long id){
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<ManagerDto> findById(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id){
         return new ResponseEntity<>(managerService.findById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable("id") Long id){
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<?> deleteById(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id){
         managerService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

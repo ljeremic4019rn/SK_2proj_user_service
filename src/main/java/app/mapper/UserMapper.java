@@ -30,7 +30,6 @@ public class UserMapper {
         userDto.setPhoneNumber(user.getPhoneNumber());
         userDto.setBirthDate(user.getBirthDate());
         userDto.setAccessEnabled(user.getAccessEnabled());
-        userDto.setRankDto(rankMapper.rankToRankDto(user.getRank()));
         userDto.setRole(user.getRole());
         return userDto;
     }
@@ -46,9 +45,6 @@ public class UserMapper {
         user.setPhoneNumber(userCreateDto.getPhoneNumber());
         user.setBirthDate(userCreateDto.getBirthDate());
         user.setAccessEnabled(userCreateDto.getAccessEnabled());
-        user.setRank(rankRepository.findById(userCreateDto.getRankId())
-                .orElseThrow(() -> new NotFoundException(String
-                        .format("Rank with id: %d does not exists.", userCreateDto.getRankId()))));
         user.setRole(userCreateDto.getRole());
         return user;
     }

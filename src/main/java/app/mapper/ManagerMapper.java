@@ -44,9 +44,6 @@ public class ManagerMapper {
         user.setPhoneNumber(managerCreateDtoDto.getPhoneNumber());
         user.setBirthDate(managerCreateDtoDto.getBirthDate());
         user.setAccessEnabled(Boolean.TRUE);
-        user.setRank(rankRepository.findRankByName("BRONZE")
-                .orElseThrow(() -> new NotFoundException(String
-                        .format("Rank with name: %s does not exists.","BRONZE"))));
         user.setRole("ROLE_MANAGER");
         userRepository.save(user);
 
@@ -54,9 +51,6 @@ public class ManagerMapper {
         Manager manager = new Manager();
         manager.setHireDate(managerCreateDtoDto.getHireDate());
         manager.setHotel(managerCreateDtoDto.getHotel());
-//        manager.setUser(userRepository.findById(managerCreateDtoDto.getUserId())
-//                .orElseThrow(() -> new NotFoundException(String
-//                        .format("User with id: %d does not exists.", managerCreateDtoDto.getUserId()))));
         manager.setUser(user);
         return manager;
     }

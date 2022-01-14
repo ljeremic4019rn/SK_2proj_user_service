@@ -14,14 +14,17 @@ public class Client {
     private Long reservationNo;
     @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
+    @ManyToOne
+    private Rank rank;
 
     public Client() {
     }
 
-    public Client(Long passportNo, Long reservationNo, User user) {
+    public Client(Long passportNo, Long reservationNo, User user, Rank rank) {
         this.passportNo = passportNo;
         this.reservationNo = reservationNo;
         this.user = user;
+        this.rank = rank;
     }
 
     public Long getId() {
@@ -54,5 +57,13 @@ public class Client {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
     }
 }

@@ -16,7 +16,7 @@ public class ClientCreateDto {
     private String password;
     private Long phoneNumber;
     private Date birthDate;
-
+    private String rankName;
 //    public Long getId() {
 //        return id;
 //    }

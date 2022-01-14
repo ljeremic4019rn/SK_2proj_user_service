@@ -16,27 +16,13 @@ public class User {
     private Long phoneNumber;
     private Date birthDate;
     private Boolean accessEnabled;
-    @ManyToOne
-    private Rank rank;
     private String role;
     private boolean verifiedMail;
     public User() {
     }
 
-    public User(String email, String firstName, String lastName, String username, String password, Long phoneNumber, Date birthDate, Rank rank, String role) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
-        this.rank = rank;
-        this.role = role;
-    }
-
     public User(String email, String firstName, String lastName, String username, String password,
-                Long phoneNumber, Date birthDate, Rank rank, String role, boolean verifiedMail) {
+                Long phoneNumber, Date birthDate, String role) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,7 +31,6 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
         this.accessEnabled = true;
-        this.rank = rank;
         this.role = role;
         this.verifiedMail = false;
     }
@@ -128,14 +113,6 @@ public class User {
 
     public void setAccessEnabled(Boolean accessEnabled) {
         this.accessEnabled = accessEnabled;
-    }
-
-    public Rank getRank() {
-        return rank;
-    }
-
-    public void setRank(Rank rank) {
-        this.rank = rank;
     }
 
     public String getRole() {

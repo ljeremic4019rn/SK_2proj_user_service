@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
 
         if (!user.getAccessEnabled()){
             TokenResponseDto tokenResponseDto = new TokenResponseDto();
-            tokenResponseDto.setToken("kurac");
+            tokenResponseDto.setToken("FORBIDDEN");
             return HttpStatus.FORBIDDEN;
         }
 

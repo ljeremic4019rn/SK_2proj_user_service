@@ -14,8 +14,6 @@ public class UserDto {
     private Long phoneNumber;
     private Date birthDate;
     private Boolean accessEnabled;
-    @JsonProperty("rank")
-    private RankDto rankDto;
     private String role;
     private boolean verifiedMail;
 
@@ -97,14 +95,6 @@ public class UserDto {
 
     public void setAccessEnabled(Boolean accessEnabled) {
         this.accessEnabled = accessEnabled;
-    }
-
-    public RankDto getRankDto() {
-        return rankDto;
-    }
-
-    public void setRankDto(RankDto rankDto) {
-        this.rankDto = rankDto;
     }
 
     public String getRole() {

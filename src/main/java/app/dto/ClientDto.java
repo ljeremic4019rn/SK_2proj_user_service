@@ -11,6 +11,8 @@ public class ClientDto {
     private Long reservationNo;
     @JsonProperty("user")
     private UserDto userDto;
+    @JsonProperty("rank")
+    private RankDto rankDto;
 
     public Long getId() {
         return id;
@@ -42,5 +44,13 @@ public class ClientDto {
 
     public void setUserDto(UserDto userDto) {
         this.userDto = userDto;
+    }
+
+    public RankDto getRankDto() {
+        return rankDto;
+    }
+
+    public void setRankDto(RankDto rankDto) {
+        this.rankDto = rankDto;
     }
 }

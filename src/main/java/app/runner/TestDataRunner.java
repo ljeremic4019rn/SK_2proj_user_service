@@ -48,7 +48,7 @@ public class TestDataRunner implements CommandLineRunner {
 
         //Insert User
         User userAdmin = new User("admin@gmail.com", "Admin", "Adminic", "admin", "admin",
-                1234567890L, new SimpleDateFormat("dd/MM/yyyy").parse("03/08/2000"), rankGold, "ROLE_ADMIN");
+                1234567890L, new SimpleDateFormat("dd/MM/yyyy").parse("03/08/2000"), "ROLE_ADMIN");
 //        User userClient = new User("client@gmail.com", "Client", "Clientic", "client", "client",
 //                178945624L, new SimpleDateFormat("dd/MM/yyyy").parse("12/08/2000"), rankGold, "ROLE_CLIENT");
         userRepository.save(userAdmin);

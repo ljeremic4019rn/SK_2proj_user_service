@@ -17,11 +17,13 @@ public class ClientMapper {
     private UserMapper userMapper;
     private UserRepository userRepository;
     private RankRepository rankRepository;
+    private RankMapper rankMapper;
 
-    public ClientMapper(UserMapper userMapper, UserRepository userRepository, RankRepository rankRepository) {
+    public ClientMapper(UserMapper userMapper, UserRepository userRepository, RankRepository rankRepository, RankMapper rankMapper) {
         this.userMapper = userMapper;
         this.userRepository = userRepository;
         this.rankRepository = rankRepository;
+        this.rankMapper = rankMapper;
     }
 
     public ClientDto clientToClientDto(Client client){
@@ -43,18 +45,15 @@ public class ClientMapper {
         user.setPhoneNumber(clientCreateDto.getPhoneNumber());
         user.setBirthDate(clientCreateDto.getBirthDate());
         user.setAccessEnabled(Boolean.TRUE);
-        user.setRank(rankRepository.findRankByName("BRONZE")
-                .orElseThrow(() -> new NotFoundException(String
-                        .format("Rank with name: %s does not exists.","BRONZE"))));
         user.setRole("ROLE_CLIENT");
         userRepository.save(user);
 
         Client client = new Client();
         client.setPassportNo(clientCreateDto.getPassportNo());
         client.setReservationNo(clientCreateDto.getReservationNo());
-//        client.setUser(userRepository.findById(clientCreateDto.getUserId())
-//                .orElseThrow(() -> new NotFoundException(String
-//                        .format("User with id: %d does not exists.", clientCreateDto.getUserId()))));
+        client.setRank(rankRepository.findRankByName("BRONZE")
+                .orElseThrow(() -> new NotFoundException(String
+                        .format("Rank with name: %s does not exists.","BRONZE"))));
         client.setUser(user);
         return client;
     }

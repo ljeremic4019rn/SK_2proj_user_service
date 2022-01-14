@@ -52,7 +52,8 @@ public class UserController {
 
     @ApiOperation(value = "Change user password")
     @PutMapping (value = "/{id}/changePassword")
-    public ResponseEntity<?> changePassword(@PathVariable("id") Long id, @RequestBody @Valid UserPasswordDto userPasswordDto){
+    @CheckSecurity(roles = {"ROLE_ADMIN","ROLE_MANAGER","ROLE_CLIENT"})
+    public ResponseEntity<?> changePassword(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid UserPasswordDto userPasswordDto){
         userPasswordDto.setId(id);//da bi bio isti id kao ukucani
         userService.changePassword(id, userPasswordDto);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -60,7 +61,7 @@ public class UserController {
 
     @ApiOperation(value = "save new user passwrod")
     @GetMapping(value = "/{id}/saveNewPassword")
-    public ResponseEntity<?> changePassword(@PathVariable("id") Long id){
+    public ResponseEntity<?> savePassword(@PathVariable("id") Long id){
         userService.saveNewPassword(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
