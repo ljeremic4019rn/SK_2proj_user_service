@@ -2,6 +2,7 @@ package app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
 public class ManagerDto {
     private Long id;
     private String hotel;
-    private Date hireDate;
+    private LocalDate hireDate;
     @JsonProperty("user")
     UserDto userDto;
 
@@ -30,11 +31,11 @@ public class ManagerDto {
         this.hotel = hotel;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 

@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class UserCreateDto {
@@ -21,7 +22,7 @@ public class UserCreateDto {
     @Length(min = 6, max = 15)
     private Long phoneNumber;
     @NotBlank
-    private Date birthDate;
+    private LocalDate birthDate;
     @NotBlank
     private Boolean accessEnabled;
     private String role;
@@ -83,11 +84,11 @@ public class UserCreateDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
