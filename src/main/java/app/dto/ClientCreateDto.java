@@ -16,7 +16,7 @@ public class ClientCreateDto {
     private String username;
     private String password;
     private Long phoneNumber;
-    private LocalDate birthDate;
+    private String birthDate;
     private String rankName;
 
     public Long getPassportNo() {
@@ -83,17 +83,17 @@ public class ClientCreateDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate parsedBDate = LocalDate.parse(birthDate, dateTimeFormatter);
-        this.birthDate = parsedBDate;
-    }
+//    public void setBirthDate(String birthDate) {
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//        LocalDate parsedBDate = LocalDate.parse(birthDate, dateTimeFormatter);
+//        this.birthDate = parsedBDate;
+//    }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 }
