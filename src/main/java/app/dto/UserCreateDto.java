@@ -22,7 +22,7 @@ public class UserCreateDto {
     @Length(min = 6, max = 15)
     private Long phoneNumber;
     @NotBlank
-    private LocalDate birthDate;
+    private String birthDate;
     @NotBlank
     private Boolean accessEnabled;
     private String role;
@@ -84,11 +84,11 @@ public class UserCreateDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

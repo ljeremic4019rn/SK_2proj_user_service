@@ -15,7 +15,7 @@ public class User {
     private String username;
     private String password;
     private Long phoneNumber;
-    private LocalDate birthDate;
+    private String birthDate;
     private Boolean accessEnabled;
     private String role;
     private boolean verifiedMail;
@@ -23,14 +23,14 @@ public class User {
     }
 
     public User(String email, String firstName, String lastName, String username, String password,
-                Long phoneNumber, LocalDate birthDate, String role) {
+                Long phoneNumber, String birthDate, String role) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.birthDate = LocalDate.now();
+        this.birthDate = birthDate;
         this.accessEnabled = true;
         this.role = role;
         this.verifiedMail = false;
@@ -100,11 +100,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

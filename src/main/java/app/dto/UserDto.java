@@ -13,7 +13,7 @@ public class UserDto {
     private String username;
     private String password;
     private Long phoneNumber;
-    private LocalDate birthDate;
+    private String birthDate;
     private Boolean accessEnabled;
     private String role;
     private boolean verifiedMail;
@@ -82,11 +82,11 @@ public class UserDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

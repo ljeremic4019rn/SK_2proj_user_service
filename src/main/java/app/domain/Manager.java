@@ -12,9 +12,8 @@ public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String hotel;
-    private LocalDate hireDate;
+    private String hireDate;
 
     @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
@@ -35,11 +34,11 @@ public class Manager {
         this.hotel = hotel;
     }
 
-    public LocalDate getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 

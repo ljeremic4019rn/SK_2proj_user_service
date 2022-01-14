@@ -11,7 +11,7 @@ import java.util.Date;
 public class ManagerDto {
     private Long id;
     private String hotel;
-    private LocalDate hireDate;
+    private String hireDate;
     @JsonProperty("user")
     UserDto userDto;
 
@@ -31,11 +31,11 @@ public class ManagerDto {
         this.hotel = hotel;
     }
 
-    public LocalDate getHireDate() {
+    public String getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(LocalDate hireDate) {
+    public void setHireDate(String hireDate) {
         this.hireDate = hireDate;
     }
 
