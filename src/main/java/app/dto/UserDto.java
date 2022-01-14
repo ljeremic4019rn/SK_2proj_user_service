@@ -2,6 +2,7 @@ package app.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class UserDto {
@@ -12,7 +13,7 @@ public class UserDto {
     private String username;
     private String password;
     private Long phoneNumber;
-    private Date birthDate;
+    private LocalDate birthDate;
     private Boolean accessEnabled;
     private String role;
     private boolean verifiedMail;
@@ -81,11 +82,11 @@ public class UserDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

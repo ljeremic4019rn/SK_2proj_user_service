@@ -1,6 +1,7 @@
 package app.domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,7 +15,7 @@ public class User {
     private String username;
     private String password;
     private Long phoneNumber;
-    private Date birthDate;
+    private LocalDate birthDate;
     private Boolean accessEnabled;
     private String role;
     private boolean verifiedMail;
@@ -22,7 +23,7 @@ public class User {
     }
 
     public User(String email, String firstName, String lastName, String username, String password,
-                Long phoneNumber, Date birthDate, String role) {
+                Long phoneNumber, LocalDate birthDate, String role) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -99,11 +100,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

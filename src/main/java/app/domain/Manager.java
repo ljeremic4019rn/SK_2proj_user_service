@@ -1,6 +1,7 @@
 package app.domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ public class Manager {
     private Long id;
 
     private String hotel;
-    private Date hireDate;
+    private LocalDate hireDate;
 
     @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
@@ -34,11 +35,11 @@ public class Manager {
         this.hotel = hotel;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 

@@ -1,5 +1,6 @@
 package app.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
 public class ManagerCreateDto {
    // private Long id;
     private String hotel;
-    private Date hireDate;
+    private LocalDate hireDate;
 //    private Long userId;
     private String email;
     private String firstName;
@@ -16,7 +17,7 @@ public class ManagerCreateDto {
     private String username;
     private String password;
     private Long phoneNumber;
-    private Date birthDate;
+    private LocalDate birthDate;
 
 //    public Long getId() {
 //        return id;
@@ -34,11 +35,11 @@ public class ManagerCreateDto {
         this.hotel = hotel;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -98,11 +99,11 @@ public class ManagerCreateDto {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 }
