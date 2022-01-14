@@ -8,7 +8,6 @@ public class RankDto {
     @NotEmpty(message = "rank cant be empty")
     private String name;
     @Min(value = 0, message = "The value must be positive")
-//    private Integer points;
 //    @Min(value = 0, message = "The value must be positive")
     private Integer lowerLimit;
     @Min(value = 0, message = "The value must be positive")
@@ -33,15 +32,6 @@ public class RankDto {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public Integer getPoints() {
-//        return points;
-//    }
-//
-//    public void setPoints(Integer points) {
-//        this.points = points;
-//    }
-
 
     public Integer getLowerLimit() {
         return lowerLimit;

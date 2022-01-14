@@ -1,13 +1,13 @@
 package app.dto;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
  * Created on 09.01.2022. by Andrija inside package app.dto.
  */
 public class ClientCreateDto {
- //   private Long id;
     private Long passportNo;
     private Long reservationNo;
     private String email;
@@ -18,13 +18,6 @@ public class ClientCreateDto {
     private Long phoneNumber;
     private LocalDate birthDate;
     private String rankName;
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
 
     public Long getPassportNo() {
         return passportNo;
@@ -92,6 +85,12 @@ public class ClientCreateDto {
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate parsedBDate = LocalDate.parse(birthDate, dateTimeFormatter);
+        this.birthDate = parsedBDate;
     }
 
     public void setBirthDate(LocalDate birthDate) {
