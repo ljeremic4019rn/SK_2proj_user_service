@@ -1,7 +1,9 @@
 package app.controller;
 
+import app.dto.ClientUpdateDto;
 import app.dto.ManagerCreateDto;
 import app.dto.ManagerDto;
+import app.dto.ManagerUpdateDto;
 import app.security.CheckSecurity;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -41,7 +43,7 @@ public class ManagerController {
         return new ResponseEntity<>(managerService.findAll(pageable), HttpStatus.OK);
     }
 
-    @PostMapping(value = "register")
+    @PostMapping("/register")
     public ResponseEntity<ManagerDto> add(@RequestBody @Valid ManagerCreateDto managerCreateDto){
         return new ResponseEntity<>(managerService.add(managerCreateDto), HttpStatus.CREATED);
     }
@@ -59,4 +61,11 @@ public class ManagerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Update profile")
+    @PutMapping (value = "/{id}/updateProfile")
+    @CheckSecurity(roles = {"ROLE_MANAGER"})
+    public ResponseEntity<?> updateProfile(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid ManagerUpdateDto managerUpdateDto){
+        managerService.updateManagerProfile(id, managerUpdateDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

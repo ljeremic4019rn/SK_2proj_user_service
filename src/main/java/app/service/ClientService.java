@@ -2,6 +2,7 @@ package app.service;
 
 import app.dto.ClientCreateDto;
 import app.dto.ClientDto;
+import app.dto.ClientUpdateDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +18,6 @@ public interface ClientService {
     ClientDto findById(Long id);
 
     void deleteById(Long id);
+
+    void updateCLientProfile(Long id, ClientUpdateDto clientUpdateDto);
 }

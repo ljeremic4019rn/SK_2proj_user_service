@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ClientDto {
     private Long id;
-    private Long passportNo;
+    private String passportNo;
     private Long reservationNo;
     @JsonProperty("user")
     private UserDto userDto;
@@ -22,11 +22,11 @@ public class ClientDto {
         this.id = id;
     }
 
-    public Long getPassportNo() {
+    public String getPassportNo() {
         return passportNo;
     }
 
-    public void setPassportNo(Long passportNo) {
+    public void setPassportNo(String passportNo) {
         this.passportNo = passportNo;
     }
 

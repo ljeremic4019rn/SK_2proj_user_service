@@ -2,6 +2,8 @@ package app.controller;
 
 import app.dto.ClientCreateDto;
 import app.dto.ClientDto;
+import app.dto.ClientUpdateDto;
+import app.dto.notificationDtos.UserPasswordDto;
 import app.security.CheckSecurity;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -43,7 +45,7 @@ public class ClientController {
         return new ResponseEntity<>(clientService.findAll(pageable), HttpStatus.OK);
     }
 
-    @PostMapping(value = "register")
+    @PostMapping("/register")
     public ResponseEntity<ClientDto> add(@RequestBody @Valid ClientCreateDto clientCreateDto){
         return new ResponseEntity<>(clientService.add(clientCreateDto), HttpStatus.CREATED);
     }
@@ -61,6 +63,13 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Update profile")
+    @PutMapping (value = "/{id}/updateProfile")
+    @CheckSecurity(roles = {"ROLE_CLIENT"})
+    public ResponseEntity<?> updateProfile(@RequestHeader("Authorization") String authorization, @PathVariable("id") Long id, @RequestBody @Valid ClientUpdateDto clientUpdateDto){
+        clientService.updateCLientProfile(id, clientUpdateDto);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }
 

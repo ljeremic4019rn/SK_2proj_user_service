@@ -10,7 +10,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long passportNo;
+    private String passportNo;
     private Long reservationNo;
     @OneToOne(cascade = CascadeType.REMOVE)
     private User user;
@@ -20,7 +20,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Long passportNo, Long reservationNo, User user, Rank rank) {
+    public Client(String passportNo, Long reservationNo, User user, Rank rank) {
         this.passportNo = passportNo;
         this.reservationNo = reservationNo;
         this.user = user;
@@ -35,11 +35,11 @@ public class Client {
         this.id = id;
     }
 
-    public Long getPassportNo() {
+    public String getPassportNo() {
         return passportNo;
     }
 
-    public void setPassportNo(Long passportNo) {
+    public void setPassportNo(String passportNo) {
         this.passportNo = passportNo;
     }
 
