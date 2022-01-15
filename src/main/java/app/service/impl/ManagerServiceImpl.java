@@ -75,7 +75,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public void updateManagerProfile(Long id, ManagerUpdateDto managerUpdateDto) {
-        Manager manager = managerRepository.findById(id)
+        Manager manager = managerRepository.findByUser_Id(id)
                 .orElseThrow(() -> new NotFoundException(String.format("Manager with id: %d not found.", id)));
         User user = manager.getUser();
         user.setFirstName(managerUpdateDto.getFirstName());
